@@ -1,14 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {Modal} from './Modal'
+import React from 'react'
+import logo from './logo.svg'
+import './App.css'
+import {Modal} from './components/Modal'
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Modal message="something here"/>
+        <Modal message="something here" />
+
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -22,7 +23,7 @@ const App: React.FC = () => {
         </a>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
