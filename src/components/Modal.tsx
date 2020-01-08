@@ -19,7 +19,7 @@ export class Modal extends React.Component<Props, State> {
 
   public render() {
     return (
-      <div>
+      <div test-id="modal">
         {this.state.hiddenCat ? this.props.otherMessage : this.props.message}
         <Button onClick={this.handleButtonClick}>
           {this.state.hiddenCat ? 'Show cat' : 'Hide cat'}
@@ -40,30 +40,31 @@ export class Modal extends React.Component<Props, State> {
   }
 
   private fetchCat = async () => {
+    this.setState({loadingCat: true})
     try {
-      this.setState({loadingCat: true, errorMessage: undefined})
       const response = await fetch('https://aws.random.cat/meow')
       const data: Data = await response.json()
-      this.setState({catImage: data.file, loadingCat: false})
+      this.setState({catImage: data.file})
     } catch (err) {
       console.error(err)
-      this.setState({loadingCat: false, errorMessage: err.message})
+      this.setState({errorMessage: err.message})
     }
+    this.setState({loadingCat: false})
+  }
+
+  private resetState = () => {
+    this.setState({catImage: undefined, errorMessage: undefined})
   }
 
   private handleButtonClick = () => {
     console.log('Tooogle')
-    const currentState = this.state.hiddenCat
+    const isHidden = this.state.hiddenCat
+    this.resetState();
     const nextState: Partial<State> = {}
-    // @TODO: write tests
-    // @TODO: reset state into separate function
-    // @TODO: lifecycle load
-    if (currentState) {
+    if (isHidden) {
       this.fetchCat()
-    } else {
-      nextState.catImage = undefined
     }
-    nextState.hiddenCat = !currentState
+    nextState.hiddenCat = !isHidden
     this.setState(nextState as State)
   }
 }
