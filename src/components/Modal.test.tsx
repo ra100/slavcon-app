@@ -22,7 +22,4 @@ describe('Modal', () => {
     TestUtils.Simulate.click(button)
     expect(button.textContent).toBe('Show cat')
   })
-
-  // TODO: start with meaningful stuff here
-  // TODO: load data from json SlavCon
 })
