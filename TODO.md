@@ -1,8 +1,8 @@
 # List of things to do
 
 - [x] Loader, Spinner, Error handling
-- [ ] Test
-- [ ] Data transform
+- [x] Test
+- [x] Data transform
 - [ ] Show list of talks
 - [ ] Show details of one talk
 - [ ] Show list in order

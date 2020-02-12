@@ -1,9 +1,5 @@
 import React from 'react'
 
-export interface Event {
-  program: Program
-}
-
 export interface Program {
   pid: string
   author: string
@@ -33,7 +29,7 @@ export interface Picture {
   title: string
 }
 
-type Props = {data: Event[]}
+type Props = {data: Program[]}
 
 export const ScheduleTable: React.FC<Props> = ({data}) => {
   return (
@@ -46,7 +42,7 @@ export const ScheduleTable: React.FC<Props> = ({data}) => {
           </tr>
         </thead>
         <tbody>
-          {data.map(({program}) => (
+          {data.map((program) => (
             <tr key={program.pid}>
               <td>{program.title}</td>
               <td>{program.author}</td>
